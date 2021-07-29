@@ -1,12 +1,21 @@
 import React from 'react';
+import Header from './Header.js';
+import Main from './Main.js';
+import Footer from './Footer.js';
 import './App.css';
 
 class App extends React.Component {
   render() {
-    return(
-      <h3>Wazzup</h3>
+    return (
+      <>
+        <Header />
+        {/* Proof of Life */}
+        <h3>Wazzup</h3>
+        <Main />
+        <Footer />
+      </>
     )
-  }  
+  }
 }
 
 export default App;

@@ -9,14 +9,18 @@ React application that takes the name of a city, submits a request to an API, an
 
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+1. 
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+React JS, React-Bootstrap, Axios, LocationIQ, GitHub, Netlify, Trello...
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+
+07-28-2021 8:15pm - Proof of life, Wazzup!
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
@@ -26,12 +30,25 @@ React application that takes the name of a city, submits a request to an API, an
 ## Time Estimates
 <!-- For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature: -->
 
-Name of feature:
+Name of feature: .env
 
-Estimate of time needed to complete:
+Estimate of time needed to complete: 5 minutes
 
-Start time:
+Start time: 8pm
 
-Finish time:
+Finish time: 805pm
 
-Actual time needed to complete:
+Actual time needed to complete: 5 minutes. Need to put REACT_APP_ then whatever you are naming your key in the the variable. Make sure to create the .env file before you push to github. 
+
+---
+
+Name of feature: Form
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 830pm
+
+Finish time: 10pm
+
+Actual time needed to complete: 1.5+ hours - COuld not figure out how to get the display name to render with the lat and long. But I had already decided to call it a night after I finished readme.
+
