@@ -1,0 +1,23 @@
+* {
+  background: linear-gradient(to right, #c2e59c, #64b3f4);
+  border-radius: 5px;
+}
+
+#formLabel {
+  font-size: 2em;
+}
+
+#exploreBtn {
+  font-size: 2em;
+}
+
+#showLatLong {
+  background-color: bisque;
+  border-radius: 5px;
+}
+
+#showMap {
+  background-color: bisque;
+  border-radius: 5px;
+  /* image-rendering: auto; */
+}
