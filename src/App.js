@@ -10,7 +10,7 @@ class App extends React.Component {
       <>
         <Header />
         {/* Proof of Life */}
-        <h3>Wazzup</h3>
+        {/* <h3>Wazzup</h3> */}
         <Main />
         <Footer />
       </>
