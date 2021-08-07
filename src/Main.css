@@ -9,6 +9,7 @@
 
 #exploreBtn {
   font-size: 2em;
+  border-width: 3px;
 }
 
 #showLatLong {
@@ -21,3 +22,32 @@
   border-radius: 5px;
   /* image-rendering: auto; */
 }
+
+#formControl {
+  text-align: center;
+  color: white;
+  font-size: 1.5em;
+  border-width: 3px;
+}
+
+div#showLatLong.jumbotron {
+  padding: 16px 32px;
+  margin: 0px 0px 10px;
+}
+
+div#showMap.jumbotron.jumbotron-fluid {
+  padding: 20px;
+}
+
+.container p {
+  padding: 10px 10px 10px;
+  margin: 0px 0px 5px;
+  color: black;
+  font-weight: bolder;
+}
+
+.jumbotron h1 {
+  padding: 20px;
+}
+
+
