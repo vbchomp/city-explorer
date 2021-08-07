@@ -17,34 +17,44 @@ class Main extends React.Component {
       cityName: '',
       lat: 0,
       lon: 0,
+      weather: [],
     }
-}
+  }
 
-handleChange = (e) => {
-  this.setState({ 
-    city: e.target.value })
-}
-
-findCity = async (e) => {
-  e.preventDefault();
-  // console.log('I am here');
-  try {
-    let cityInfo = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.city}&format=json`);
-    console.log(cityInfo.data[0]);
-    let searchQuery = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/weather?lat=${cityInfo.data[0].lat}&lon=${cityInfo.data[0].lon}&searchQuery=${cityInfo.data[0].display_name}`);
-    console.log(searchQuery);
+  handleChange = (e) => {
     this.setState({
-      showLatLong: true,
-      cityName: cityInfo.data[0].display_name,
-      lat: cityInfo.data[0].lat,
-      lon: cityInfo.data[0].lon,
-      showMap: true,
+      city: e.target.value
     })
   }
-  catch (error) {
-    console.log('404', error.message);
+
+  handleErrors = (error) => {
+    let errMsg = 'You might have misspelled a city name. Please try again.';
+    if (error) {
+      return errMsg;
+    }
   }
-}
+
+  findCity = async (e) => {
+    e.preventDefault();
+    // console.log('I am here');
+    try {
+      let cityInfo = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.city}&format=json`);
+      console.log(cityInfo.data[0]);
+      let searchQuery = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/weather?lat=${cityInfo.data[0].lat}&lon=${cityInfo.data[0].lon}&searchQuery=${this.state.city}`);
+      console.log(searchQuery);
+      this.setState({
+        showLatLong: true,
+        cityName: cityInfo.data[0].display_name,
+        lat: cityInfo.data[0].lat,
+        lon: cityInfo.data[0].lon,
+        showMap: true,
+        weather: searchQuery.data,
+      })
+    }
+    catch (error) {
+      this.handleErrors();
+    }
+  }
 
   render() {
     // console.log(this.state);
@@ -53,26 +63,24 @@ findCity = async (e) => {
         <Container>
           <Form onSubmit={this.findCity}>
             <Form.Group controlId="cityName">
-              <Form.Label id="formLabel">Select a City Name</Form.Label>{' '}
-              <Form.Control type="text" onChange={this.handleChange} />
+              <Form.Label id="formLabel">Select a City To See the Next 3 Days of Weather and a Map</Form.Label>{' '}
+              <Form.Control id="formControl" type="text" onChange={this.handleChange} />
             </Form.Group>
             <Button id="exploreBtn" type="submit" variant="secondary" block>Explore!</Button>
           </Form>
-          {/* {this.state.showLatLong ? <h3>City Name: {this.state.cityName}, Latitude: {this.state.lat}, Longitude: {this.state.lon}</h3> : ''} */}
           {this.state.showLatLong ? <Jumbotron id="showLatLong">
-            <h1>City Name: {this.state.cityName}</h1>
-            <h3>Latitude: {this.state.lat}</h3>
-            <h3>Longitude: {this.state.lon}</h3>
+            <h1>{this.state.cityName}</h1>
+            <h3>Latitude: {this.state.lat}, Longitude: {this.state.lon}</h3>
           </Jumbotron> : ''}
-          {/* {this.state.showMap ? <img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.lat},${this.state.lon}&zoom=12`} alt={this.state.cityName}/> : ''} */}
+          <Weather
+            weather={this.state.weather}
+          />
           {this.state.showMap ? <Jumbotron id="showMap" fluid>
             <Container>
-              {/* <h1>{this.state.cityName}</h1> */}
-              <img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.lat},${this.state.lon}&zoom=12`} alt={this.state.cityName}/>
+              <img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.lat},${this.state.lon}&zoom=12`} alt={this.state.city} />
             </Container>
           </Jumbotron> : ''}
         </Container>
-        <Weather />
       </main>
     )
   }
