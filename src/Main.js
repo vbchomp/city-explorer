@@ -3,8 +3,10 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Jumbotron from 'react-bootstrap/Jumbotron';
+import CardColumns from 'react-bootstrap/CardColumns';
 import axios from 'axios';
 import Weather from './Weather.js';
+import Movies from './Movies.js';
 import './Main.css';
 
 class Main extends React.Component {
@@ -18,6 +20,7 @@ class Main extends React.Component {
       lat: 0,
       lon: 0,
       weather: [],
+      movies: [],
     }
   }
 
@@ -33,6 +36,19 @@ class Main extends React.Component {
       return errMsg;
     }
   }
+  getWeather = async () => {
+    let results = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/weather?lat=${this.state.lat}&lon=${this.state.lon}`);
+    this.setState({
+      weather: results.data,
+    })
+  }
+
+  getMovies = async () => {
+    let results = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/movies?city=${this.state.city}`);
+    this.setState({
+      movies: results.data,
+    })
+  }
 
   findCity = async (e) => {
     e.preventDefault();
@@ -40,31 +56,32 @@ class Main extends React.Component {
     try {
       let cityInfo = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.city}&format=json`);
       console.log(cityInfo.data[0]);
-      let searchQuery = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/weather?lat=${cityInfo.data[0].lat}&lon=${cityInfo.data[0].lon}&searchQuery=${this.state.city}`);
-      console.log(searchQuery);
+      // console.log(searchQuery);
       this.setState({
         showLatLong: true,
         cityName: cityInfo.data[0].display_name,
         lat: cityInfo.data[0].lat,
         lon: cityInfo.data[0].lon,
         showMap: true,
-        weather: searchQuery.data,
       })
+      this.getWeather();
+      this.getMovies();
     }
     catch (error) {
       this.handleErrors();
     }
   }
 
+
   render() {
-    // console.log(this.state);
+    console.log(this.state);
     return (
       <main>
         <Container>
           <Form onSubmit={this.findCity}>
             <Form.Group controlId="cityName">
-              <Form.Label id="formLabel">Select a City To See the Next 3 Days of Weather and a Map</Form.Label>{' '}
-              <Form.Control id="formControl" type="text" onChange={this.handleChange} />
+              <Form.Label id="formLabel">Select a City To See a Map, Movies and Weather</Form.Label>{' '}
+              <Form.Control className="formControl" type="text" onChange={this.handleChange} />
             </Form.Group>
             <Button id="exploreBtn" type="submit" variant="secondary" block>Explore!</Button>
           </Form>
@@ -72,14 +89,25 @@ class Main extends React.Component {
             <h1>{this.state.cityName}</h1>
             <h3>Latitude: {this.state.lat}, Longitude: {this.state.lon}</h3>
           </Jumbotron> : ''}
-          <Weather
-            weather={this.state.weather}
-          />
           {this.state.showMap ? <Jumbotron id="showMap" fluid>
             <Container>
               <img src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.lat},${this.state.lon}&zoom=12`} alt={this.state.city} />
             </Container>
           </Jumbotron> : ''}
+          <Container>
+            <CardColumns>
+              <Movies
+                movies={this.state.movies}
+              />
+            </CardColumns>
+          </Container>
+          <Container>
+            <CardColumns>
+              <Weather
+                weather={this.state.weather}
+              />
+            </CardColumns>
+          </Container>
         </Container>
       </main>
     )
