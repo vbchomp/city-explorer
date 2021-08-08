@@ -12,14 +12,6 @@ class Weather extends React.Component {
     }
   }
 
-  // getSearchQuery = async () => {
-  //   let searchQuery = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/weather?lat=${this.props.lat}&lon=${this.props.lon}&searchQuery=${this.state.cityName}`);
-  //   this.setState({
-  //     showWeatherData: true,
-  //   })
-  //   return searchQuery;
-  // };
-
   render() {
     
     return (
@@ -27,8 +19,8 @@ class Weather extends React.Component {
         <Container>
           {this.props.weather.map(item => {
             return <div key={item.date}>
-              <p>{item.date}</p>
               <p>{item.description}</p>
+              <p>{item.date}</p>
             </div>
           })}
         </Container>
