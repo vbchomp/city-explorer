@@ -31,7 +31,9 @@ React JS, React-Bootstrap, Axios, LocationIQ, Weather API, GitHub, Netlify, Hero
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
-- Quentin Young III, UML collaboration, [CityExplorerUML](src/CityExplorerUML.png), [CityExplorerUML](src/CityExplorerApiUML.png)
+- Quentin Young III, UML collaboration, [CityExplorerUML](src/CityExplorerUML.png)
+- Connor Boyce, Software Developer, [CityExplorerUML](src/CityExplorerApiUML.png)
+- Ryan Gallaway, Instructor
 - JP Jones, Instructor, helped me refactor and get my weather component working after discovering that I did not have to create a new city API in the City Explorer API repo.
 
 ## Time Estimates
