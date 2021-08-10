@@ -19,6 +19,10 @@ class Movies extends React.Component {
               return <div key={movie.title}>
                 <p>{movie.title}</p>
                 <p>{movie.src}</p>
+                <img 
+                src={movie.src} 
+                alt={this.state.city} 
+              />
               </div>
             })}
         </Container>
