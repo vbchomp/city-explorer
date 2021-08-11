@@ -46,6 +46,10 @@ div#showMap.jumbotron.jumbotron-fluid {
   font-weight: bolder;
 }
 
+div.container {
+  margin: 0px 20px; 
+}
+
 .jumbotron h1 {
   padding: 20px;
 }

@@ -33,7 +33,7 @@ React JS, React-Bootstrap, Axios, LocationIQ, Weather API, GitHub, Netlify, Hero
 
 - Quentin Young III, UML collaboration, [CityExplorerUML](src/CityExplorerUML.png)
 - Connor Boyce, Software Developer, [CityExplorerUML](src/CityExplorerApiUML.png)
-- Ryan Gallaway, Instructor
+- Ryan Gallaway, Instructor, 42
 - JP Jones, Instructor, helped me refactor and get my weather component working after discovering that I did not have to create a new city API in the City Explorer API repo.
 
 ## Time Estimates
@@ -60,4 +60,3 @@ Start time: 830pm
 Finish time: 10pm
 
 Actual time needed to complete: 1.5+ hours - COuld not figure out how to get the display name to render with the lat and long. But I had already decided to call it a night after I finished readme.
-
