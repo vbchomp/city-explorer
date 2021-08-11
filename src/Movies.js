@@ -18,7 +18,7 @@ class Movies extends React.Component {
             {this.props.movies.map(movie => {
               return <div key={movie.title}>
                 <p>{movie.title}</p>
-                <p>{movie.src}</p>
+                {/* <p>{movie.src}</p> */}
                 <img 
                 src={movie.src} 
                 alt={this.state.city} 

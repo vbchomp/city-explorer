@@ -66,12 +66,10 @@ class Main extends React.Component {
       })
       this.getWeather();
       this.getMovies();
-    }
-    catch (error) {
+    } catch (error) {
       this.handleErrors();
     }
   }
-
 
   render() {
     console.log(this.state);
@@ -89,11 +87,11 @@ class Main extends React.Component {
             <h1>{this.state.cityName}</h1>
             <h3>Latitude: {this.state.lat}, Longitude: {this.state.lon}</h3>
           </Jumbotron> : ''}
-          {this.state.showMap ? <Jumbotron id="showMap" fluid style={{textAlign: 'center'}} >
+          {this.state.showMap ? <Jumbotron id="showMap" fluid style={{ textAlign: 'center' }} >
             <Container>
-              <img 
-                src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.lat},${this.state.lon}&zoom=12`} 
-                alt={this.state.city} 
+              <img
+                src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&center=${this.state.lat},${this.state.lon}&zoom=12`}
+                alt={this.state.city}
               />
             </Container>
           </Jumbotron> : ''}
