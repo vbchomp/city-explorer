@@ -19,8 +19,8 @@ class Weather extends React.Component {
         <Container>
           {this.props.weather.map(item => {
             return <div key={item.date}>
-              <p>{item.description}</p>
               <p>{item.date}</p>
+              <p>{item.description}</p>
             </div>
           })}
         </Container>

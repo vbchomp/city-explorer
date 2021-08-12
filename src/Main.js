@@ -45,6 +45,7 @@ class Main extends React.Component {
 
   getMovies = async () => {
     let results = await axios.get(`${process.env.REACT_APP_BACKEND_URI}/movies?city=${this.state.city}`);
+    console.log(results.data);
     this.setState({
       movies: results.data,
     })
