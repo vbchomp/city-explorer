@@ -1,7 +1,8 @@
-# Project Name
+# City Explorer
 
 **Author**: Heather Bisgaard
-**Version**: 1.0.5 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 1.0.11
+**Deployed Site**: https://city-explorer-hbisgaard.netlify.app/
 
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
@@ -11,7 +12,7 @@ React application that takes the name of a city, submits a request to an API, an
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
 1. Create .env file. Make this file to hold you API keys. If they are for the front end REACT app, you will need to type REACT_APP_ then a variable for the key. Then the = and paste the key in. See the SAMPLE.env file for an example. Then enter .env in your .gitignore file.
 
-2. You will need to create a server component and 'npm i' all the node js components like dotenv, cors, and express.
+2. You will need to create a server component and 'npm i' all the React App components like react, react-bootstrap, bootstrap and the middleware axios.
 
 3. You will need to question your sanity and wonder why in the hell you signed up for something that makes you want pull your hair out one strand at a time.
 
@@ -19,7 +20,7 @@ React application that takes the name of a city, submits a request to an API, an
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
-React JS, React-Bootstrap, Axios, LocationIQ, Weather API, GitHub, Netlify, Heroku, Trello...
+React JS, React-Bootstrap, Axios, LocationIQ, Weather API, MovieDB API, GitHub, Netlify, Heroku, Trello...
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
